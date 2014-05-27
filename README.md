@@ -1,5 +1,5 @@
-mayaPolyQuickHull
-=================
+polyQuickHull
+=============
 
 Maya plugin that creates a polygonal mesh of the convex hull of irregular point cloud, using
 "The Quickhull Algorithm for Convex Hulls (1996)" by Barber, Dobkin & Huhdanpaa.
