@@ -1,0 +1,23 @@
+file -f -new;
+
+$qt = `createNode transform -n pQuickHull1`;
+$qs = `createNode mesh -n pQuickHullShape1 -p pQuickHull1`;
+$qh = `createNode polyQuickHull -n polyQuickHull1`;
+
+for ($i = 1; $i <= 100; $i++) {
+ $x = rand(0, 2);
+ $y = rand(0, 2);
+ $z = rand(0, 2);
+ 
+ string $l[] = `spaceLocator -p 0.0 0.0 0.0`;
+ 
+ string $attr_a = $l[0] + ".translate";
+ setAttr $attr_a $x $y $z;
+ 
+ string $attr_b = $l[0] + ".worldPosition[0]";
+ string $attr_c = $qh + ".inPoints[" + $i + "]";
+ connectAttr $attr_b $attr_c;
+};
+
+connectAttr polyQuickHull1.outMesh pQuickHullShape1.inMesh;
+sets -add initialShadingGroup pQuickHullShape1;
